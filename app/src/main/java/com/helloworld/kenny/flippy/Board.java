@@ -4,16 +4,59 @@ package com.helloworld.kenny.flippy;
  * Created by Kenny on 4/20/2016.
  */
 public class Board {
-    private Tile[][] board;
-    private boolean[][] CAT;
-    private int[][] sums;
 
-    int randomWithRange(int min, int max) {
-        int range = (max - min) + 1;
-        return (int) (Math.random() * range) + min;
+    private final int NUM_ZEROS = 6;
+    private final int NUM_TWOS = 2;
+    private final int NUM_THREES = 3;
+
+    private Tile [][] board;
+    private boolean [][] allocTable;
+    private int [][] sums;
+    private int [][] zeros;
+
+
+    private int dim;
+
+    public Board(int dim, int level) {
+        board = new Tile[dim][dim];
+        sums = new int[dim][2];
+        zeros = new int[dim][2];
+        allocTable = new boolean[dim][dim];
+
+        this.dim = dim;
+
+        //initialize board to 1
+        for (int i = 0; i < dim; i++) {
+            for (int j = 0; j < dim; j++) {
+                board[i][j] = new Tile(1);
+                allocTable[i][j] = false;
+            }
+        }
+
+        initialize(0, NUM_ZEROS);
+        initialize(3, NUM_THREES);
+        initialize(2, NUM_TWOS);
     }
 
-    public void printSol(int dim) {
+    private void initialize(int type, int amt) {
+        for (int i = 0; i < amt; i++) {
+            int x = randomWithRange(0, dim - 1);
+            int y = randomWithRange(0, dim - 1);
+            if (allocTable[x][y]) {
+                setAt(x, y, type);
+            } else {
+                i--;
+            }
+        }
+    }
+
+
+    private void setAt(int x, int y, int type) {
+        board[x][y].setType(type);
+        allocTable[x][y] = true;
+    }
+
+    public void printSolution(int dim) {
         for (int i = 0; i < dim; i++) {
             for (int j = 0; j < dim; j++) {
                 System.out.print((board[i][j]).getType() + " ");
@@ -24,6 +67,11 @@ public class Board {
             System.out.print(sums[i][1] + " ");
         }
         System.out.println();
+    }
+
+    private int randomWithRange(int min, int max) {
+        int range = (max - min) + 1;
+        return (int) (Math.random() * range) + min;
     }
 
     public void printBoard(int dim) {
@@ -43,62 +91,13 @@ public class Board {
         System.out.println();
     }
 
-    public void createBoard(int dim, int level) {
-        board = new Tile[dim][dim];
-        CAT = new boolean[dim][dim];
-        sums = new int[dim][2];
-        //initialize board to 1
-        for (int i = 0; i < dim; i++) {
-            for (int j = 0; j < dim; j++) {
-                board[i][j] = new Tile(1);
-                CAT[i][j] = false;
-                if (j < 2) {
-                    sums[i][j] = dim;
-                }
-            }
-        }
-        //set 0s
-        int numZeros = 6;
-        for (int i = 0; i < numZeros; i++) {
-            int x = randomWithRange(0, dim - 1);
-            int y = randomWithRange(0, dim - 1);
-            if (!CAT[x][y]) {
-                board[x][y].setType(0);
-                CAT[x][y] = true;
-                sums[x][0] += 99;
-                sums[y][1] += 99;
-            } else {
-                i--;
-            }
-        }
-        //set 3s
-        int numThrees = 2;
-        for (int i = 0; i < numThrees; i++) {
-            int x = randomWithRange(0, dim - 1);
-            int y = randomWithRange(0, dim - 1);
-            if (!CAT[x][y]) {
-                board[x][y].setType(3);
-                CAT[x][y] = true;
-                sums[x][0] += 2;
-                sums[y][1] += 2;
-            } else {
-                i--;
-            }
-        }
-        //set 2s
-        int numTwos = 2;
-        for (int i = 0; i < numTwos; i++) {
-            int x = randomWithRange(0, dim - 1);
-            int y = randomWithRange(0, dim - 1);
-            if (!CAT[x][y]) {
-                board[x][y].setType(2);
-                CAT[x][y] = true;
-                sums[x][0]++;
-                sums[y][1]++;
-            } else {
-                i--;
-            }
-        }
+    public boolean flipAt(int x, int y) {
+        if(!board[x][y].checkFlipped())
+            return false;
+
+        board[x][y].markFlipped();
+
+        return true;
     }
 
 }
