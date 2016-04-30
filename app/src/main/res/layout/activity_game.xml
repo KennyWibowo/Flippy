@@ -1,37 +1,55 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:paddingLeft="16dp"
-    android:paddingRight="16dp" >
+    android:paddingRight="16dp"
+    android:background="@drawable/phone"
+    >
 
     <EditText
         android:id="@+id/name"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/main_menu" />
+        android:hint="@string/main_menu"
+        android:textStyle=""
+        />
+
 
         <Button
             android:id = "@+id/play_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="@string/button_send" />
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            android:background="@drawable/buttonshape"
+            android:text="@string/button_send"
+            android:textColor = "#FCFAFF"
+            android:textSize = "30sp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
 
         <Button
             android:id = "@+id/settings_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:background="@drawable/buttonshape"
+            android:textColor = "@android:color/white"
+            android:text="@string/settings"
+            android:layout_marginTop="26dp"
             android:layout_below="@+id/play_button"
-            android:layout_centerInParent="true"
-            android:text="@string/settings" />
+            android:layout_centerHorizontal="true" />
 
         <Button
             android:id = "@+id/instructions_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:background="@drawable/buttonshape"
+            android:textColor = "@android:color/white"
+            android:text="@string/instructions"
+            android:layout_marginTop="28dp"
             android:layout_below="@+id/settings_button"
-            android:layout_centerInParent="true"
-            android:text="@string/instructions" />
+            android:layout_alignLeft="@+id/settings_button"
+            android:layout_alignStart="@+id/settings_button" />
 
 
 </RelativeLayout>
