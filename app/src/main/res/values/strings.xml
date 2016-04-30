@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Flippy</string>
     <string name = "main_menu">Snoozee Games</string>
+    <string name = "music">Royalty Free Music from Bensound</string>
     <string name = "button_send">Play</string>
     <string name = "return_button">Main Menu</string>
     <string name = "settings">Settings</string>
