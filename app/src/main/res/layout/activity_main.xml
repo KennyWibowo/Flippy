@@ -1,0 +1,72 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/phone"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="18dp"
+        android:hint="@string/main_menu"
+        android:textStyle="" />
+
+    <TextView
+        android:id="@+id/game_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/play_button"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="38dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:hint="@string/main_menu"
+        android:text="@string/app_name"
+        android:textSize="70dp" />
+
+
+    <Button
+        android:id="@+id/play_button"
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/buttonshape"
+        android:text="@string/button_send"
+        android:textColor="#FCFAFF"
+        android:textSize="30sp" />
+
+
+    <Button
+        android:id="@+id/settings_button"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/play_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:background="@drawable/buttonshape"
+        android:text="@string/settings"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/instructions_button"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_alignLeft="@+id/settings_button"
+        android:layout_alignStart="@+id/settings_button"
+        android:layout_below="@+id/settings_button"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/buttonshape"
+        android:text="@string/instructions"
+        android:textColor="@android:color/white" />
+
+
+</RelativeLayout>
