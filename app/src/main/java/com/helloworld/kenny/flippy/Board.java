@@ -3,128 +3,105 @@ package com.helloworld.kenny.flippy;
 /**
  * Created by Kenny on 4/20/2016.
  */
-public class Board
-{
-    private Tile[][] board;
-    private boolean[][] CAT;
-    private int[][] sums;
+public class Board {
 
-    int randomWithRange(int min, int max)
-    {
-        int range = (max - min) + 1;
-        return (int)(Math.random() * range) + min;
+    private final int NUM_ZEROS = 6;
+    private final int NUM_TWOS = 2;
+    private final int NUM_THREES = 3;
+
+    private Tile [][] board;
+    private boolean [][] allocTable;
+    private int [][] sums;
+    private int [][] zeros;
+
+
+    private int dim;
+
+    public Board(int dim, int level) {
+        this.board = new Tile[dim][dim];
+        this.sums = new int[dim][2];
+        this.zeros = new int[dim][2];
+        this.allocTable = new boolean[dim][dim];
+        this.dim = dim;
+
+        //initialize board to 1
+        for (int i = 0; i < dim; i++) {
+            for (int j = 0; j < dim; j++) {
+                board[i][j] = new Tile(1);
+                allocTable[i][j] = false;
+            }
+        }
+
+        int max = (dim*dim)/4;
+
+        int numZeros = (max <= NUM_ZEROS+level ? max : NUM_ZEROS+level);
+        int numThrees = (max <= NUM_THREES+level ? max : NUM_THREES+level);
+        int numTwos = (max <= NUM_TWOS+level ? max : NUM_TWOS+level);
+
+        initialize(0, numZeros);
+        initialize(3, numThrees);
+        initialize(2, numTwos);
     }
 
-    public void printSol(int dim)
-    {
-        for(int i = 0; i < dim; i++)
-        {
-            for(int j = 0; j < dim; j++)
-            {
-                System.out.print((board[i][j]).getType()+" ");
+    private void initialize(int type, int amt) {
+        for (int i = 0; i < amt; i++) {
+            int x = randomWithRange(0, dim - 1);
+            int y = randomWithRange(0, dim - 1);
+            if (allocTable[x][y]) {
+                setAt(x, y, type);
+            } else {
+                i--;
+            }
+        }
+    }
+
+    public void printSolution(int dim) {
+        for (int i = 0; i < dim; i++) {
+            for (int j = 0; j < dim; j++) {
+                System.out.print((board[i][j]).getType() + " ");
             }
             System.out.println(sums[i][0]);
         }
-        for(int i = 0; i < dim; i++)
-        {
-            System.out.print(sums[i][1]+" ");
+        for (int i = 0; i < dim; i++) {
+            System.out.print(sums[i][1] + " ");
         }
         System.out.println();
     }
 
-    public void printBoard(int dim)
-    {
-        for(int i = 0; i < dim; i++)
-        {
-            for(int j = 0; j < dim; j++)
-            {
-                if((board[i][j].checkFlipped()))
-                {
-                    System.out.print((board[i][j]).getType()+" ");
-                }
-                else
-                {
+    private int randomWithRange(int min, int max) {
+        int range = (max - min) + 1;
+        return (int) (Math.random() * range) + min;
+    }
+
+    public void printBoard(int dim) {
+        for (int i = 0; i < dim; i++) {
+            for (int j = 0; j < dim; j++) {
+                if ((board[i][j].checkFlipped())) {
+                    System.out.print((board[i][j]).getType() + " ");
+                } else {
                     System.out.print("* ");
                 }
             }
             System.out.println(sums[i][0]);
         }
-        for(int i = 0; i < dim; i++)
-        {
-            System.out.print(sums[i][1]+" ");
+        for (int i = 0; i < dim; i++) {
+            System.out.print(sums[i][1] + " ");
         }
         System.out.println();
     }
-    public void createBoard(int dim, int level)
-    {
-        board = new Tile[dim][dim];
-        CAT = new boolean[dim][dim];
-        sums = new int[dim][2];
-        //initialize board to 1
-        for(int i = 0; i < dim; i++)
-        {
-            for(int j = 0; j < dim; j++)
-            {
-                board[i][j] = new Tile(1);
-                CAT[i][j] = false;
-                if (j < 2)
-                {
-                    sums[i][j] = dim;
-                }
-            }
-        }
-        //set 0s
-        int numZeros = 6;
-        for(int i = 0; i < numZeros; i++)
-        {
-            int x = randomWithRange(0, dim-1);
-            int y = randomWithRange(0, dim-1);
-            if (!CAT[x][y])
-            {
-                board[x][y].setType(0);
-                CAT[x][y] = true;
-                sums[x][0]+=99;
-                sums[y][1]+=99;
-            }
-            else
-            {
-                i--;
-            }
-        }
-        //set 3s
-        int numThrees = 2;
-        for(int i = 0; i < numThrees; i++){
-            int x = randomWithRange(0, dim-1);
-            int y = randomWithRange(0, dim-1);
-            if (!CAT[x][y])
-            {
-                board[x][y].setType(3);
-                CAT[x][y] = true;
-                sums[x][0]+=2;
-                sums[y][1]+=2;
-            }
-            else
-            {
-                i--;
-            }
-        }
-        //set 2s
-        int numTwos = 2;
-        for(int i = 0; i < numTwos; i++){
-            int x = randomWithRange(0, dim-1);
-            int y = randomWithRange(0, dim-1);
-            if (!CAT[x][y])
-            {
-                board[x][y].setType(2);
-                CAT[x][y] = true;
-                sums[x][0]++;
-                sums[y][1]++;
-            }
-            else
-            {
-                i--;
-            }
-        }
+
+    public boolean flipAt(int x, int y) {
+        if(!board[x][y].checkFlipped())
+            return false;
+
+        board[x][y].markFlipped();
+
+        return true;
+    }
+
+    private void setAt(int x, int y, int type) {
+        board[x][y].setType(type);
+        allocTable[x][y] = true;
     }
 
 }
