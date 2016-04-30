@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 public class GameActivity extends AppCompatActivity {
 
+    private int score;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
