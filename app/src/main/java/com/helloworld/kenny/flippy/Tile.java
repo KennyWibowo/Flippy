@@ -13,7 +13,13 @@ public class Tile {
     }
 
     public int getType() {
-        return type;
+        return this.type;
     }
+
+    public void flipTile() {
+        this.flipped ^= true;
+    }
+
+    public boolean isFlipped { return this.flipped }
 
 }
