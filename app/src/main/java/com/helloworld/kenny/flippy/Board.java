@@ -18,11 +18,10 @@ public class Board {
     private int dim;
 
     public Board(int dim, int level) {
-        board = new Tile[dim][dim];
-        sums = new int[dim][2];
-        zeros = new int[dim][2];
-        allocTable = new boolean[dim][dim];
-
+        this.board = new Tile[dim][dim];
+        this.sums = new int[dim][2];
+        this.zeros = new int[dim][2];
+        this.allocTable = new boolean[dim][dim];
         this.dim = dim;
 
         //initialize board to 1
@@ -33,9 +32,15 @@ public class Board {
             }
         }
 
-        initialize(0, NUM_ZEROS);
-        initialize(3, NUM_THREES);
-        initialize(2, NUM_TWOS);
+        int max = (dim*dim)/4;
+
+        int numZeros = (max <= NUM_ZEROS+level ? max : NUM_ZEROS+level);
+        int numThrees = (max <= NUM_THREES+level ? max : NUM_THREES+level);
+        int numTwos = (max <= NUM_TWOS+level ? max : NUM_TWOS+level);
+
+        initialize(0, numZeros);
+        initialize(3, numThrees);
+        initialize(2, numTwos);
     }
 
     private void initialize(int type, int amt) {
@@ -48,12 +53,6 @@ public class Board {
                 i--;
             }
         }
-    }
-
-
-    private void setAt(int x, int y, int type) {
-        board[x][y].setType(type);
-        allocTable[x][y] = true;
     }
 
     public void printSolution(int dim) {
@@ -98,6 +97,11 @@ public class Board {
         board[x][y].markFlipped();
 
         return true;
+    }
+
+    private void setAt(int x, int y, int type) {
+        board[x][y].setType(type);
+        allocTable[x][y] = true;
     }
 
 }
