@@ -236,7 +236,7 @@ public class BoardGame extends AppCompatActivity {
 
     private void animateFlip(int id, String content) {
         if(board.gameOver()) {
-            Intent k = new Intent(BoardGame.this, MainActivity.class);
+            Intent k = new Intent(BoardGame.this, GameOver.class);
             startActivity(k);
         }
 

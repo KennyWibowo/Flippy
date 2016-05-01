@@ -12,8 +12,8 @@
         android:textColor="#FCFAFF"
         android:textSize="30sp"
         android:layout_gravity="center"
-        android:onClick="clickDoneButton"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="35dp" />
+        android:layout_marginBottom="35dp"
+        android:onClick="clickDoneButton"/>
 </RelativeLayout>
