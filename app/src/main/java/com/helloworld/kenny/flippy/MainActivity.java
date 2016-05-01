@@ -29,19 +29,16 @@ public class MainActivity extends AppCompatActivity {
         mySound.setLooping(true);
         mySound.start();
 
-        playButton.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, GameActivity.class);
-                startActivity(i);
-            }
-        });
+    }
 
-        howToButton.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-                Intent j = new Intent(MainActivity.this, Instructions.class);
-                startActivity(j);
-            }
-        });
+    public void clickPlayButton(View view) {
+        Intent i = new Intent(MainActivity.this, GameActivity.class);
+        startActivity(i);
+    }
+
+    public void clickHowToButton(View view) {
+        Intent j = new Intent(MainActivity.this, Instructions.class);
+        startActivity(j);
     }
 
     @Override
