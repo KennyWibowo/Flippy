@@ -41,6 +41,9 @@ public class Board {
         initialize(0, numZeros);
         initialize(3, numThrees);
         initialize(2, numTwos);
+
+        countSums();
+        countZeros();
     }
 
     private void initialize(int type, int amt) {
@@ -55,6 +58,51 @@ public class Board {
         }
     }
 
+    private void countSums() {
+        for ( int row = 0; row < dim; row++ ) { // board[row][col]
+            int rowsum = 0;
+            for ( int col = 0; col < dim; col++ ) {
+                rowsum += board[row][col].getType();
+            }
+            sums[row][0] = rowsum;
+        }
+
+        for ( int col = 0; col < dim; col++ ) {
+            int colsum = 0;
+            for ( int row = 0; row < dim; row++ ) {
+                colsum += board[row][col].getType();
+            }
+            sums[col][1] = colsum;
+        }
+    }
+
+    private void countZeros() {
+        for ( int row = 0; row < dim; row++ ) { // board[row][col]
+            int rowzeros = 0;
+            for ( int col = 0; col < dim; col++ ) {
+                if(board[row][col].getType() == 0) {
+                    rowzeros++;
+                }
+            }
+            zeros[row][0] = rowzeros;
+        }
+
+        for ( int col = 0; col < dim; col++ ) {
+            int colzeros = 0;
+            for ( int row = 0; row < dim; row++ ) {
+                if(board[row][col].getType() == 0) {
+                    colzeros++;
+                }
+            }
+            sums[col][1] = colzeros;
+        }
+    }
+
+    private int randomWithRange(int min, int max) {
+        int range = (max - min) + 1;
+        return (int) (Math.random() * range) + min;
+    }
+
     public void printSolution(int dim) {
         for (int i = 0; i < dim; i++) {
             for (int j = 0; j < dim; j++) {
@@ -66,11 +114,6 @@ public class Board {
             System.out.print(sums[i][1] + " ");
         }
         System.out.println();
-    }
-
-    private int randomWithRange(int min, int max) {
-        int range = (max - min) + 1;
-        return (int) (Math.random() * range) + min;
     }
 
     public void printBoard(int dim) {
@@ -99,9 +142,19 @@ public class Board {
         return true;
     }
 
-    private void setAt(int x, int y, int type) {
-        board[x][y].setType(type);
-        allocTable[x][y] = true;
+    public int getRowSum(int row) {
+        return sums[row][0];
     }
 
+    public int getColSum(int col) {
+        return sums[col][1];
+    }
+
+    public int getRowZeros(int row) {
+        return zeros[row][0];
+    }
+
+    public int getColZeros(int col) {
+        return zeros[col][1];
+    }
 }
