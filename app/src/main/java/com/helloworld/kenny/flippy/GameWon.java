@@ -6,26 +6,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class GameActivity extends AppCompatActivity {
+public class GameWon extends AppCompatActivity {
 
     Button backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game);
+        setContentView(R.layout.activity_game_won);
 
         backButton = (Button) this.findViewById(R.id.back_button);
 
-        /*backButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-
-            }
-        });*/
     }
 
     public void clickBackButton(View view) {
-        Intent i = new Intent(GameActivity.this, MainActivity.class);
+        Intent i = new Intent(GameWon.this, MainActivity.class);
         startActivity(i);
     }
 }
