@@ -41,6 +41,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(j);
     }
 
+    public void clicksettingsButton(View view) {
+        Intent k = new Intent(MainActivity.this, game_setting.class);
+        startActivity(k);
+    }
+
     @Override
     protected void onPause() {
         super.onPause();
