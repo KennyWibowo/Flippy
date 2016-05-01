@@ -275,7 +275,8 @@ public class BoardGame extends AppCompatActivity {
         }
 
         if(board.gameWon()) {
-            System.out.println("Game won!");
+            Intent k = new Intent(BoardGame.this, GameWon.class);
+            startActivity(k);
         }
 
         ((Button) this.findViewById(R.id.button36)).setText("SCORE: " + board.getScore());
