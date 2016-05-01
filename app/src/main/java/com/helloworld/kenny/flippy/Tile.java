@@ -4,12 +4,13 @@ package com.helloworld.kenny.flippy;
  * Created by Kenny on 4/20/2016.
  */
 public class Tile{
-    private boolean flipped = false;
-    private int type = 0;
+    private boolean flipped;
+    private int type;
 
     public Tile(int type)
     {
         this.type = type;
+        this.flipped = false;
     }
 
     public void markFlipped(){this.flipped = true;}

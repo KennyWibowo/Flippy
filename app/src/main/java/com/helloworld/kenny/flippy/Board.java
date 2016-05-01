@@ -5,7 +5,7 @@ package com.helloworld.kenny.flippy;
  */
 public class Board {
 
-    private final int NUM_ZEROS = 6;
+    private final int NUM_ZEROS = 8;
     private final int NUM_TWOS = 2;
     private final int NUM_THREES = 3;
 
@@ -36,14 +36,16 @@ public class Board {
 
         int max = (dim*dim)/4;
 
-        int numZeros = (max <= NUM_ZEROS+level ? max : NUM_ZEROS+level);
-        int numThrees = (max <= NUM_THREES+level ? max : NUM_THREES+level);
-        int numTwos = (max <= NUM_TWOS+level ? max : NUM_TWOS+level);
+        int numZeros = (max <= NUM_ZEROS+level ? NUM_ZEROS+level : max);
+        int numThrees = (max <= NUM_THREES+level ? NUM_THREES+level : max);
+        int numTwos = (max <= NUM_TWOS+level ? NUM_TWOS+level : max);
 
+        System.out.println("Starting initialize...");
         initialize(0, numZeros);
         initialize(3, numThrees);
         initialize(2, numTwos);
 
+        System.out.println("Starting counts...");
         countSums();
         countZeros();
     }
@@ -52,7 +54,7 @@ public class Board {
         for (int i = 0; i < amt; i++) {
             int x = randomWithRange(0, dim - 1);
             int y = randomWithRange(0, dim - 1);
-            if (allocTable[x][y]) {
+            if (!allocTable[x][y]) {
                 board[x][y].setType(type);
                 allocTable[x][y] = true;
             } else {
@@ -63,41 +65,21 @@ public class Board {
 
     private void countSums() {
         for ( int row = 0; row < dim; row++ ) { // board[row][col]
-            int rowsum = 0;
             for ( int col = 0; col < dim; col++ ) {
-                rowsum += board[row][col].getType();
+                sums[row][0]+= board[row][col].getType();
+                sums[col][1]+= board[row][col].getType();
             }
-            sums[row][0] = rowsum;
-        }
-
-        for ( int col = 0; col < dim; col++ ) {
-            int colsum = 0;
-            for ( int row = 0; row < dim; row++ ) {
-                colsum += board[row][col].getType();
-            }
-            sums[col][1] = colsum;
         }
     }
 
     private void countZeros() {
         for ( int row = 0; row < dim; row++ ) { // board[row][col]
-            int rowzeros = 0;
             for ( int col = 0; col < dim; col++ ) {
                 if(board[row][col].getType() == 0) {
-                    rowzeros++;
+                    zeros[row][0]++;
+                    zeros[col][1]++;
                 }
             }
-            zeros[row][0] = rowzeros;
-        }
-
-        for ( int col = 0; col < dim; col++ ) {
-            int colzeros = 0;
-            for ( int row = 0; row < dim; row++ ) {
-                if(board[row][col].getType() == 0) {
-                    colzeros++;
-                }
-            }
-            sums[col][1] = colzeros;
         }
     }
 
@@ -106,20 +88,24 @@ public class Board {
         return (int) (Math.random() * range) + min;
     }
 
-    public void printSolution(int dim) {
+    public void printSolution() {
         for (int i = 0; i < dim; i++) {
             for (int j = 0; j < dim; j++) {
-                System.out.print((board[i][j]).getType() + " ");
+                System.out.print((board[i][j]).getType() + "  ");
             }
-            System.out.println(sums[i][0]);
+            System.out.printf("%-2d %-2d\n", sums[i][0], zeros[i][0]);
         }
         for (int i = 0; i < dim; i++) {
-            System.out.print(sums[i][1] + " ");
+            System.out.printf("%-2d ", sums[i][1]);
+        }
+        System.out.println();
+        for (int i = 0; i < dim; i++) {
+            System.out.printf("%-2d ", zeros[i][1]);
         }
         System.out.println();
     }
 
-    public void printBoard(int dim) {
+    public void printBoard() {
         for (int i = 0; i < dim; i++) {
             for (int j = 0; j < dim; j++) {
                 if ((board[i][j].checkFlipped())) {
@@ -137,7 +123,7 @@ public class Board {
     }
 
     public int flipAt(int x, int y) {
-        if(!board[x][y].checkFlipped())
+        if(board[x][y].checkFlipped())
             return -1;
 
         board[x][y].markFlipped();

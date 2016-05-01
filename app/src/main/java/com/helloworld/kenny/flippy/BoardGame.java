@@ -20,8 +20,11 @@ public class BoardGame extends AppCompatActivity {
 
         board = new Board(5, 0);
         System.out.println("Board is ready");
+        board.printSolution();
 
     }
+
+    //public void set
 
     public void flipTile(View view) {
         int result;
@@ -29,6 +32,7 @@ public class BoardGame extends AppCompatActivity {
         switch (view.getId()) {
             case (R.id.button1):
                 if ((result = board.flipAt(0, 0)) == -1) {
+                    System.out.println("Result: " + result);
                     //do nothing
                 } else {
                     animateFlip(R.id.button1, "" + result);
@@ -231,6 +235,7 @@ public class BoardGame extends AppCompatActivity {
     }
 
     private void animateFlip(int id, String content) {
+        System.out.println("Flip this: " + id);
         ((Button) this.findViewById(id)).setText(content);
     }
 }
