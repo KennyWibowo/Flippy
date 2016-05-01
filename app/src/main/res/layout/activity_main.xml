@@ -55,7 +55,7 @@
         android:text="@string/button_send"
         android:background="@drawable/buttonshape"
         android:textColor="#FCFAFF"
-        android:textSize="30sp"/>
+        android:textSize="30sp"
         android:onClick="clickPlayButton"/>
 
 
