@@ -142,6 +142,11 @@ public class Board {
         return true;
     }
 
+    private void setAt(int x, int y, int type) {
+        board[x][y].setType(type);
+        allocTable[x][y] = true;
+    }
+
     public int getRowSum(int row) {
         return sums[row][0];
     }
