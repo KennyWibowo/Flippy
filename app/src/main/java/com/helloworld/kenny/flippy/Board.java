@@ -16,6 +16,8 @@ public class Board {
 
     private int dim;
     private int score;
+    private int numThrees;
+    private int numTwos;
 
     public Board(int dim, int level) {
         System.out.println("Starting board creation...");
@@ -37,8 +39,8 @@ public class Board {
         int max = (dim*dim)/4;
 
         int numZeros = (max <= NUM_ZEROS+level ? max : NUM_ZEROS+level);
-        int numThrees = (max <= NUM_THREES+level ? max : NUM_THREES+level);
-        int numTwos = (max <= NUM_TWOS+level ? max : NUM_TWOS+level);
+        numThrees = (max <= NUM_THREES+level ? max : NUM_THREES+level);
+        numTwos = (max <= NUM_TWOS+level ? max : NUM_TWOS+level);
 
         System.out.println("Starting initialize...");
         initialize(0, numZeros);
@@ -109,15 +111,19 @@ public class Board {
         for (int i = 0; i < dim; i++) {
             for (int j = 0; j < dim; j++) {
                 if ((board[i][j].checkFlipped())) {
-                    System.out.print((board[i][j]).getType() + " ");
+                    System.out.print((board[i][j]).getType() + "  ");
                 } else {
-                    System.out.print("* ");
+                    System.out.print("*  ");
                 }
             }
-            System.out.println(sums[i][0]);
+            System.out.printf("%-2d %-2d\n", sums[i][0], zeros[i][0]);
         }
         for (int i = 0; i < dim; i++) {
-            System.out.print(sums[i][1] + " ");
+            System.out.printf("%-2d ", sums[i][1]);
+        }
+        System.out.println();
+        for (int i = 0; i < dim; i++) {
+            System.out.printf("%-2d ", zeros[i][1]);
         }
         System.out.println();
     }
@@ -129,6 +135,11 @@ public class Board {
         board[x][y].markFlipped();
 
         score *= board[x][y].getType();
+
+        if(board[x][y].getType() == 2)
+            numTwos--;
+        if(board[x][y].getType() == 3)
+            numThrees--;
 
         return board[x][y].getType();
     }
@@ -155,5 +166,9 @@ public class Board {
 
     public boolean gameOver() {
         return score == 0;
+    }
+
+    public boolean gameWon() {
+        return (numTwos == 0 && numThrees == 0);
     }
 }
