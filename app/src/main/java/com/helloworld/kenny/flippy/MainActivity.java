@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickPlayButton(View view) {
-        Intent i = new Intent(MainActivity.this, GameActivity.class);
+        Intent i = new Intent(MainActivity.this, BoardGame.class);
         startActivity(i);
     }
 
