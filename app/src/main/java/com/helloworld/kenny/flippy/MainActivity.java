@@ -10,13 +10,11 @@ import android.view.View.OnClickListener;
 
 
 public class MainActivity extends AppCompatActivity {
-
     Button playButton;
     Button settingsButton;
     Button howToButton;
 
     MediaPlayer mySound;
-    private int score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,4 +42,5 @@ public class MainActivity extends AppCompatActivity {
         mySound.release();
         finish();
     }
+
 }
