@@ -33,26 +33,21 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, GameActivity.class);
                 startActivity(i);
-            }});
+            }
+        });
+
+        howToButton.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+                Intent j = new Intent(MainActivity.this, Instructions.class);
+                startActivity(j);
+            }
+        });
     }
 
     @Override
-    protected void onPause(){
+    protected void onPause() {
         super.onPause();
         mySound.release();
         finish();
-    }
-
-    public void giveIntformation(View v)
-    {
-        String button_text;
-        button_text =((Button) v).getText().toString();
-        if(button_text.equals("How to Play"))
-        {
-            Intent intent = new Intent(this,Instructions.class);
-            startActivity(intent);
-
-
-        }
     }
 }
