@@ -19,6 +19,7 @@ public class BoardGame extends AppCompatActivity {
         setContentView(R.layout.boardgame);
 
         board = new Board(5, 0);
+        System.out.println("Board is ready");
 
     }
 
@@ -27,7 +28,7 @@ public class BoardGame extends AppCompatActivity {
 
         switch (view.getId()) {
             case (R.id.button1):
-                if ((result = board.flipAt()) == -1) {
+                if ((result = board.flipAt(0, 0)) == -1) {
                     //do nothing
                 } else {
                     animateFlip(R.id.button1, "" + result);
@@ -35,7 +36,7 @@ public class BoardGame extends AppCompatActivity {
                 }
                 break;
             case (R.id.button2):
-                if ((result = board.flipAt()) == -1) {
+                if ((result = board.flipAt(0, 1)) == -1) {
                     //do nothing
                 } else {
                     animateFlip(R.id.button2, "" + result);
@@ -43,7 +44,7 @@ public class BoardGame extends AppCompatActivity {
                 }
                 break;
             case (R.id.button3):
-                if ((result = board.flipAt()) == -1) {
+                if ((result = board.flipAt(0, 2)) == -1) {
                     //do nothing
                 } else {
                     animateFlip(R.id.button3, "" + result);
@@ -51,7 +52,7 @@ public class BoardGame extends AppCompatActivity {
                 }
                 break;
             case (R.id.button4):
-                if ((result = board.flipAt()) == -1) {
+                if ((result = board.flipAt(0, 3)) == -1) {
                     //do nothing
                 } else {
                     animateFlip(R.id.button4, "" + result);
@@ -59,7 +60,7 @@ public class BoardGame extends AppCompatActivity {
                 }
                 break;
             case (R.id.button5):
-                if ((result = board.flipAt()) == -1) {
+                if ((result = board.flipAt(0, 4)) == -1) {
                     //do nothing
                 } else {
                     animateFlip(R.id.button5, "" + result);
@@ -67,7 +68,7 @@ public class BoardGame extends AppCompatActivity {
                 }
                 break;
             case (R.id.button6):
-                if ((result = board.flipAt()) == -1) {
+                if ((result = board.flipAt(1, 0)) == -1) {
                     //do nothing
                 } else {
                     animateFlip(R.id.button6, "" + result);
@@ -75,7 +76,7 @@ public class BoardGame extends AppCompatActivity {
                 }
                 break;
             case (R.id.button7):
-                if ((result = board.flipAt()) == -1) {
+                if ((result = board.flipAt(1, 1)) == -1) {
                     //do nothing
                 } else {
                     animateFlip(R.id.button7, "" + result);
@@ -83,7 +84,7 @@ public class BoardGame extends AppCompatActivity {
                 }
                 break;
             case (R.id.button8):
-                if ((result = board.flipAt()) == -1) {
+                if ((result = board.flipAt(1, 2)) == -1) {
                     //do nothing
                 } else {
                     animateFlip(R.id.button8, "" + result);
@@ -91,7 +92,7 @@ public class BoardGame extends AppCompatActivity {
                 }
                 break;
             case (R.id.button9):
-                if ((result = board.flipAt()) == -1) {
+                if ((result = board.flipAt(1, 3)) == -1) {
                     //do nothing
                 } else {
                     animateFlip(R.id.button9, "" + result);
@@ -99,7 +100,7 @@ public class BoardGame extends AppCompatActivity {
                 }
                 break;
             case (R.id.button10):
-                if ((result = board.flipAt()) == -1) {
+                if ((result = board.flipAt(1, 4)) == -1) {
                     //do nothing
                 } else {
                     animateFlip(R.id.button10, "" + result);
@@ -107,7 +108,7 @@ public class BoardGame extends AppCompatActivity {
                 }
                 break;
             case (R.id.button11):
-                if ((result = board.flipAt()) == -1) {
+                if ((result = board.flipAt(2, 0)) == -1) {
                     //do nothing
                 } else {
                     animateFlip(R.id.button11, "" + result);
@@ -115,7 +116,7 @@ public class BoardGame extends AppCompatActivity {
                 }
                 break;
             case (R.id.button12):
-                if ((result = board.flipAt()) == -1) {
+                if ((result = board.flipAt(2, 1)) == -1) {
                     //do nothing
                 } else {
                     animateFlip(R.id.button12, "" + result);
@@ -123,7 +124,7 @@ public class BoardGame extends AppCompatActivity {
                 }
                 break;
             case (R.id.button13):
-                if ((result = board.flipAt()) == -1) {
+                if ((result = board.flipAt(2, 2)) == -1) {
                     //do nothing
                 } else {
                     animateFlip(R.id.button13, "" + result);
@@ -131,7 +132,7 @@ public class BoardGame extends AppCompatActivity {
                 }
                 break;
             case (R.id.button14):
-                if ((result = board.flipAt()) == -1) {
+                if ((result = board.flipAt(2, 3)) == -1) {
                     //do nothing
                 } else {
                     animateFlip(R.id.button14, "" + result);
@@ -139,7 +140,7 @@ public class BoardGame extends AppCompatActivity {
                 }
                 break;
             case (R.id.button15):
-                if ((result = board.flipAt()) == -1) {
+                if ((result = board.flipAt(2, 4)) == -1) {
                     //do nothing
                 } else {
                     animateFlip(R.id.button15, "" + result);
@@ -147,7 +148,7 @@ public class BoardGame extends AppCompatActivity {
                 }
                 break;
             case (R.id.button16):
-                if ((result = board.flipAt()) == -1) {
+                if ((result = board.flipAt(3, 0)) == -1) {
                     //do nothing
                 } else {
                     animateFlip(R.id.button16, "" + result);
@@ -155,7 +156,7 @@ public class BoardGame extends AppCompatActivity {
                 }
                 break;
             case (R.id.button17):
-                if ((result = board.flipAt()) == -1) {
+                if ((result = board.flipAt(3, 1)) == -1) {
                     //do nothing
                 } else {
                     animateFlip(R.id.button17, "" + result);
@@ -163,7 +164,7 @@ public class BoardGame extends AppCompatActivity {
                 }
                 break;
             case (R.id.button18):
-                if ((result = board.flipAt()) == -1) {
+                if ((result = board.flipAt(3, 2)) == -1) {
                     //do nothing
                 } else {
                     animateFlip(R.id.button18, "" + result);
@@ -171,7 +172,7 @@ public class BoardGame extends AppCompatActivity {
                 }
                 break;
             case (R.id.button19):
-                if ((result = board.flipAt()) == -1) {
+                if ((result = board.flipAt(3, 3)) == -1) {
                     //do nothing
                 } else {
                     animateFlip(R.id.button19, "" + result);
@@ -179,7 +180,7 @@ public class BoardGame extends AppCompatActivity {
                 }
                 break;
             case (R.id.button20):
-                if ((result = board.flipAt()) == -1) {
+                if ((result = board.flipAt(3, 4)) == -1) {
                     //do nothing
                 } else {
                     animateFlip(R.id.button20, "" + result);
@@ -187,7 +188,7 @@ public class BoardGame extends AppCompatActivity {
                 }
                 break;
             case (R.id.button21):
-                if ((result = board.flipAt()) == -1) {
+                if ((result = board.flipAt(4, 0)) == -1) {
                     //do nothing
                 } else {
                     animateFlip(R.id.button21, "" + result);
@@ -195,7 +196,7 @@ public class BoardGame extends AppCompatActivity {
                 }
                 break;
             case (R.id.button22):
-                if ((result = board.flipAt()) == -1) {
+                if ((result = board.flipAt(4, 1)) == -1) {
                     //do nothing
                 } else {
                     animateFlip(R.id.button22, "" + result);
@@ -203,7 +204,7 @@ public class BoardGame extends AppCompatActivity {
                 }
                 break;
             case (R.id.button23):
-                if ((result = board.flipAt()) == -1) {
+                if ((result = board.flipAt(4, 2)) == -1) {
                     //do nothing
                 } else {
                     animateFlip(R.id.button23, "" + result);
@@ -211,7 +212,7 @@ public class BoardGame extends AppCompatActivity {
                 }
                 break;
             case (R.id.button24):
-                if ((result = board.flipAt()) == -1) {
+                if ((result = board.flipAt(4, 3)) == -1) {
                     //do nothing
                 } else {
                     animateFlip(R.id.button24, "" + result);
@@ -219,7 +220,7 @@ public class BoardGame extends AppCompatActivity {
                 }
                 break;
             case (R.id.button25):
-                if ((result = board.flipAt()) == -1) {
+                if ((result = board.flipAt(4, 4)) == -1) {
                     //do nothing
                 } else {
                     animateFlip(R.id.button25, "" + result);

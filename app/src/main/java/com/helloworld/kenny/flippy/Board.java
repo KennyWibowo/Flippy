@@ -18,6 +18,7 @@ public class Board {
     private int score;
 
     public Board(int dim, int level) {
+        System.out.println("Starting board creation...");
         this.board = new Tile[dim][dim];
         this.sums = new int[dim][2];
         this.zeros = new int[dim][2];
@@ -52,7 +53,8 @@ public class Board {
             int x = randomWithRange(0, dim - 1);
             int y = randomWithRange(0, dim - 1);
             if (allocTable[x][y]) {
-                setAt(x, y, type);
+                board[x][y].setType(type);
+                allocTable[x][y] = true;
             } else {
                 i--;
             }
@@ -143,11 +145,6 @@ public class Board {
         score *= board[x][y].getType();
 
         return board[x][y].getType();
-    }
-
-    private void setAt(int x, int y, int type) {
-        board[x][y].setType(type);
-        allocTable[x][y] = true;
     }
 
     public int getRowSum(int row) {
