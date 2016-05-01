@@ -111,15 +111,19 @@ public class Board {
         for (int i = 0; i < dim; i++) {
             for (int j = 0; j < dim; j++) {
                 if ((board[i][j].checkFlipped())) {
-                    System.out.print((board[i][j]).getType() + " ");
+                    System.out.print((board[i][j]).getType() + "  ");
                 } else {
-                    System.out.print("* ");
+                    System.out.print("*  ");
                 }
             }
-            System.out.println(sums[i][0]);
+            System.out.printf("%-2d %-2d\n", sums[i][0], zeros[i][0]);
         }
         for (int i = 0; i < dim; i++) {
-            System.out.print(sums[i][1] + " ");
+            System.out.printf("%-2d ", sums[i][1]);
+        }
+        System.out.println();
+        for (int i = 0; i < dim; i++) {
+            System.out.printf("%-2d ", zeros[i][1]);
         }
         System.out.println();
     }

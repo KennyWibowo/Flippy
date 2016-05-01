@@ -21,10 +21,42 @@ public class BoardGame extends AppCompatActivity {
         board = new Board(5, 0);
         System.out.println("Board is ready");
         board.printSolution();
+        board.printBoard();
+
+        setInfo();
+    }
+    // 26 - 30: rows
+    // 31 - 35: cols
+    public void setInfo() {
+        Button row1 = (Button) this.findViewById(R.id.button26);
+        Button row2 = (Button) this.findViewById(R.id.button27);
+        Button row3 = (Button) this.findViewById(R.id.button28);
+        Button row4 = (Button) this.findViewById(R.id.button29);
+        Button row5 = (Button) this.findViewById(R.id.button30);
+
+        Button col1 = (Button) this.findViewById(R.id.button31);
+        Button col2 = (Button) this.findViewById(R.id.button32);
+        Button col3 = (Button) this.findViewById(R.id.button33);
+        Button col4 = (Button) this.findViewById(R.id.button34);
+        Button col5 = (Button) this.findViewById(R.id.button35);
+
+        row1.setText(formatButton(board.getRowSum(0), board.getRowZeros(0)));
+        row2.setText(formatButton(board.getRowSum(1), board.getRowZeros(1)));
+        row3.setText(formatButton(board.getRowSum(2), board.getRowZeros(2)));
+        row4.setText(formatButton(board.getRowSum(3), board.getRowZeros(3)));
+        row5.setText(formatButton(board.getRowSum(4), board.getRowZeros(4)));
+
+        col1.setText(formatButton(board.getColSum(0), board.getColZeros(0)));
+        col2.setText(formatButton(board.getColSum(1), board.getColZeros(1)));
+        col3.setText(formatButton(board.getColSum(2), board.getColZeros(2)));
+        col4.setText(formatButton(board.getColSum(3), board.getColZeros(3)));
+        col5.setText(formatButton(board.getColSum(4), board.getColZeros(4)));
 
     }
 
-    //public void set
+    private String formatButton(int sum, int zeros) {
+        return "Sum: " + sum + "\n0's: " + zeros;
+    }
 
     public void flipTile(View view) {
         int result;
@@ -238,6 +270,10 @@ public class BoardGame extends AppCompatActivity {
         if(board.gameOver()) {
             Intent k = new Intent(BoardGame.this, MainActivity.class);
             startActivity(k);
+        }
+
+        if(board.gameWon()) {
+            // route to game won page
         }
 
         ((Button) this.findViewById(id)).setText(content);
