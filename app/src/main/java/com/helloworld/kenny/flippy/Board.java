@@ -16,6 +16,8 @@ public class Board {
 
     private int dim;
     private int score;
+    private int numThrees;
+    private int numTwos;
 
     public Board(int dim, int level) {
         System.out.println("Starting board creation...");
@@ -37,8 +39,8 @@ public class Board {
         int max = (dim*dim)/4;
 
         int numZeros = (max <= NUM_ZEROS+level ? max : NUM_ZEROS+level);
-        int numThrees = (max <= NUM_THREES+level ? max : NUM_THREES+level);
-        int numTwos = (max <= NUM_TWOS+level ? max : NUM_TWOS+level);
+        numThrees = (max <= NUM_THREES+level ? max : NUM_THREES+level);
+        numTwos = (max <= NUM_TWOS+level ? max : NUM_TWOS+level);
 
         System.out.println("Starting initialize...");
         initialize(0, numZeros);
@@ -130,6 +132,11 @@ public class Board {
 
         score *= board[x][y].getType();
 
+        if(board[x][y].getType() == 2)
+            numTwos--;
+        if(board[x][y].getType() == 3)
+            numThrees--;
+
         return board[x][y].getType();
     }
 
@@ -155,5 +162,9 @@ public class Board {
 
     public boolean gameOver() {
         return score == 0;
+    }
+
+    public boolean gameWon() {
+        return (numTwos == 0 && numThrees == 0);
     }
 }
