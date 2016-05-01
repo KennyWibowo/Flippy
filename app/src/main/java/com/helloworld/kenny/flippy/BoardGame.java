@@ -235,7 +235,11 @@ public class BoardGame extends AppCompatActivity {
     }
 
     private void animateFlip(int id, String content) {
-        System.out.println("Flip this: " + id);
+        if(board.gameOver()) {
+            Intent k = new Intent(BoardGame.this, MainActivity.class);
+            startActivity(k);
+        }
+
         ((Button) this.findViewById(id)).setText(content);
     }
 }

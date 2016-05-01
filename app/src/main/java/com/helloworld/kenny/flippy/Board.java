@@ -36,9 +36,9 @@ public class Board {
 
         int max = (dim*dim)/4;
 
-        int numZeros = (max <= NUM_ZEROS+level ? NUM_ZEROS+level : max);
-        int numThrees = (max <= NUM_THREES+level ? NUM_THREES+level : max);
-        int numTwos = (max <= NUM_TWOS+level ? NUM_TWOS+level : max);
+        int numZeros = (max <= NUM_ZEROS+level ? max : NUM_ZEROS+level);
+        int numThrees = (max <= NUM_THREES+level ? max : NUM_THREES+level);
+        int numTwos = (max <= NUM_TWOS+level ? max : NUM_TWOS+level);
 
         System.out.println("Starting initialize...");
         initialize(0, numZeros);
