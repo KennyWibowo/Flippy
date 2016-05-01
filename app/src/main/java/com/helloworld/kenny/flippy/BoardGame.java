@@ -52,10 +52,12 @@ public class BoardGame extends AppCompatActivity {
         col4.setText(formatButton(board.getColSum(3), board.getColZeros(3)));
         col5.setText(formatButton(board.getColSum(4), board.getColZeros(4)));
 
+        ((Button) this.findViewById(R.id.button36)).setText("SCORE: " + board.getScore());
+
     }
 
     private String formatButton(int sum, int zeros) {
-        return "Sum: " + sum + "\n0's: " + zeros;
+        return "sum: " + sum + "\n0's: " + zeros;
     }
 
     public void flipTile(View view) {
@@ -273,9 +275,11 @@ public class BoardGame extends AppCompatActivity {
         }
 
         if(board.gameWon()) {
-            // route to game won page
+            Intent k = new Intent(BoardGame.this, GameWon.class);
+            startActivity(k);
         }
 
+        ((Button) this.findViewById(R.id.button36)).setText("SCORE: " + board.getScore());
         ((Button) this.findViewById(id)).setText(content);
     }
 }
