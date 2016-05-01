@@ -2,7 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/colortwo"
+    android:background="@drawable/phone"
     android:paddingLeft="16dp"
     android:paddingRight="16dp">
 
@@ -22,13 +22,12 @@
         android:id="@+id/music_credit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:layout_gravity="center"
-        android:layout_marginBottom="18dp"
         android:hint="@string/music"
-        android:textStyle="" />
+        android:textStyle=""
+        android:layout_alignTop="@+id/name"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 
     <TextView
