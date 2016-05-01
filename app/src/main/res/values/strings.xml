@@ -7,6 +7,6 @@
     <string name = "settings">Settings</string>
     <string name = "instructions">How to Play</string>
     <string name = "back">Back</string>
-    <string name="directions"> Objective \n \n Clear the board without flipping a tile that contains a dragon. You will receive a score
-    multiplier based on the value of the tile you choose to reveal. \n \n \n GIT GUD KID</string>
+    <string name="directions"> Objective \n \n Clear the board without flipping a tile that contains a zero. You will receive a score
+    multiplier based on the value of the tile you choose to reveal. \n \n \n </string>
 </resources>
