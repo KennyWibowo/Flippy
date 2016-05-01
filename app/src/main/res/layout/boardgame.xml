@@ -399,8 +399,16 @@
         android:layout_toRightOf="@+id/button24"
         android:layout_toEndOf="@+id/button24" />
 
-
-
+    <Button
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:text="Score:  "
+        android:id="@+id/button36"
+        android:background="@drawable/score"
+        android:layout_marginTop="59dp"
+        android:layout_below="@+id/button32"
+        android:layout_alignRight="@+id/button34"
+        android:layout_alignEnd="@+id/button34" />
 
 
 </RelativeLayout>
