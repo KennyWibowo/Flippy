@@ -3,6 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colortwo">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity = "center"
+        android:text="@string/directions"
+        android:textColor="@android:color/black"
+        android:textSize = "25sp"
+        android:layout_marginBottom="40dp"
+        android:layout_above="@+id/return_button"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
     <Button
         android:id="@+id/back_button"
         android:layout_width="150dp"
