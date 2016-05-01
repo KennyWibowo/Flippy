@@ -1,5 +1,6 @@
 package com.helloworld.kenny.flippy;
 
+import android.media.MediaPlayer;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +15,9 @@ public class MainActivity extends AppCompatActivity {
     Button settingsButton;
     Button howToButton;
 
+    MediaPlayer mySound;
+    private int score;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,10 +27,21 @@ public class MainActivity extends AppCompatActivity {
         settingsButton = (Button) this.findViewById(R.id.settings_button);
         howToButton = (Button) this.findViewById(R.id.instructions_button);
 
+        mySound = MediaPlayer.create(this, R.raw.memories);
+        mySound.setLooping(true);
+        mySound.start();
+
         playButton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, GameActivity.class);
                 startActivity(i);
             }});
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        mySound.release();
+        finish();
     }
 }
