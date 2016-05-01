@@ -67,6 +67,7 @@
         android:background="@drawable/buttonshape"
         android:text="@string/instructions"
         android:textColor="@android:color/white" />
-
+        android:onClick="giveInstructions"
+        android:id="@+id/button" />
 
 </RelativeLayout>
