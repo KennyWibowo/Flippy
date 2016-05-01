@@ -14,8 +14,8 @@ public class Board {
     private int [][] sums;
     private int [][] zeros;
 
-
     private int dim;
+    private int score;
 
     public Board(int dim, int level) {
         this.board = new Tile[dim][dim];
@@ -23,6 +23,7 @@ public class Board {
         this.zeros = new int[dim][2];
         this.allocTable = new boolean[dim][dim];
         this.dim = dim;
+        this.score = 1;
 
         //initialize board to 1
         for (int i = 0; i < dim; i++) {
@@ -133,13 +134,15 @@ public class Board {
         System.out.println();
     }
 
-    public boolean flipAt(int x, int y) {
+    public int flipAt(int x, int y) {
         if(!board[x][y].checkFlipped())
-            return false;
+            return -1;
 
         board[x][y].markFlipped();
 
-        return true;
+        score *= board[x][y].getType();
+
+        return board[x][y].getType();
     }
 
     private void setAt(int x, int y, int type) {
@@ -161,5 +164,13 @@ public class Board {
 
     public int getColZeros(int col) {
         return zeros[col][1];
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public boolean gameOver() {
+        return score == 0;
     }
 }
